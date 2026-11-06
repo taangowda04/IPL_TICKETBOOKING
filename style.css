@@ -1,0 +1,388 @@
+ :root {
+    --primary-color: #1e3a8a;
+    --accent-color: #f59e0b;
+    --background-color: #f3f4f6;
+    --text-color: #1f2937;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 60px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 15px;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    margin: 30px 0;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+#home {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        #2563eb
+    );
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 30px;
+    border-radius: 12px;
+}
+
+#home h2 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+#home p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #d97706;
+}
+
+#about ul {
+    padding-left: 25px;
+}
+
+#about li {
+    margin: 8px 0;
+}
+
+#team {
+    padding: 8px;
+    margin: 10px 0 20px 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: 1px solid white;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.booking-form,
+.booking-summary {
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.booking-form h3,
+.booking-summary h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+form button {
+    margin-top: 20px;
+}
+
+.booking-summary p {
+    padding: 8px;
+    margin: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.guidelines-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.guideline-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.guideline-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Activity 3 */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    position: static;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+#matches {
+    overflow-x: auto;
+}
+
+#matches table {
+    min-width: 800px;
+}
+
+
+#my-bookings {
+    overflow-x: auto;
+}
+
+#my-bookings table {
+    min-width: 700px;
+}
+
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav li {
+        margin: 5px 10px;
+    }
+
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guidelines-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #home h2 {
+        font-size: 28px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin: 6px 0;
+    }
+
+    main {
+        width: 95%;
+    }
+
+    section {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    #home {
+        padding: 40px 15px;
+    }
+
+    #home h2 {
+        font-size: 24px;
+    }
+
+    #home p {
+        font-size: 16px;
+    }
+
+    button {
+        width: 90%;
+        margin: 5px auto;
+    }
+
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guidelines-container {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-form,
+    .booking-summary,
+    .guideline-card {
+        padding: 15px;
+    }
+
+}
