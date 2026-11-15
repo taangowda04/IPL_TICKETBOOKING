@@ -73,8 +73,6 @@ header {
 
 /* LOGO CONTAINER */
 
-/* RCB LOGO */
-
 .logo-container {
     display: flex;
     align-items: center;
@@ -95,27 +93,6 @@ header {
     margin: 0;
 }
 
-/* TABLET */
-
-@media (max-width: 768px) {
-    .logo-container {
-        justify-content: center;
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 480px) {
-    .logo-container {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .rcb-logo {
-        width: 80px;
-        height: 60px;
-    }
-}
 
 /* =====================================
    NAVIGATION - FLEXBOX
@@ -129,7 +106,6 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-
     flex-wrap: wrap;
 
     list-style: none;
@@ -145,7 +121,6 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-
     transition: 0.3s;
 }
 
@@ -214,7 +189,6 @@ button {
 button:hover {
     background-color: var(--accent-color);
     color: #111;
-
     transform: translateY(-2px);
 }
 
@@ -240,14 +214,12 @@ button:hover {
 .table-container {
     width: 100%;
     overflow-x: auto;
-
     -webkit-overflow-scrolling: touch;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-
     margin-top: 15px;
 
     background-color: var(--card-color);
@@ -257,19 +229,14 @@ table {
 th {
     background-color: var(--primary-color);
     color: white;
-
     padding: 14px;
-
     border: 1px solid #555;
-
     white-space: nowrap;
 }
 
 td {
     padding: 12px;
-
     border: 1px solid var(--border-color);
-
     text-align: center;
     white-space: nowrap;
 }
@@ -278,15 +245,9 @@ tr:hover {
     background-color: #303030;
 }
 
-
-/* MATCH TABLE */
-
 #matches table {
     min-width: 800px;
 }
-
-
-/* MY BOOKINGS TABLE */
 
 #my-bookings table {
     min-width: 700px;
@@ -299,16 +260,13 @@ tr:hover {
 
 .booking-container {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 25px;
 }
 
 .booking-form,
 .booking-summary {
     min-width: 0;
-
     padding: 25px;
 
     border: 1px solid var(--primary-color);
@@ -332,10 +290,8 @@ tr:hover {
 
 form label {
     display: block;
-
     margin-top: 12px;
     margin-bottom: 5px;
-
     font-weight: bold;
 }
 
@@ -343,7 +299,6 @@ form input,
 form select,
 #team {
     width: 100%;
-
     padding: 12px;
 
     background-color: #111;
@@ -377,7 +332,6 @@ form button {
 .booking-summary p {
     padding: 10px;
     margin: 5px 0;
-
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -388,15 +342,12 @@ form button {
 
 .guidelines-container {
     display: grid;
-
     grid-template-columns: repeat(3, minmax(0, 1fr));
-
     gap: 20px;
 }
 
 .guideline-card {
     min-width: 0;
-
     padding: 20px;
 
     border: 1px solid var(--border-color);
@@ -486,7 +437,6 @@ footer p {
     #home h2 {
         font-size: 28px;
     }
-
 }
 
 
@@ -568,5 +518,50 @@ footer p {
     .guideline-card {
         padding: 15px;
     }
+}
 
+
+/* =====================================
+   TOAST NOTIFICATION - ACTIVITY 5
+===================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    background: #D71920;
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 8px;
+    border: 1px solid #D4AF37;
+
+    font-weight: bold;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: all 0.3s ease;
+
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* TOAST - MOBILE RESPONSIVENESS */
+
+@media (max-width: 480px) {
+
+    .toast {
+        right: 15px;
+        left: 15px;
+        bottom: 15px;
+        text-align: center;
+    }
 }
