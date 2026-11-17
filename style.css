@@ -565,3 +565,438 @@ footer p {
         text-align: center;
     }
 }
+/* =====================================
+   ACTIVITY 8 - MATCH CARD LAYOUT
+===================================== */
+
+.match-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.match-controls label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#team {
+    width: auto;
+    min-width: 150px;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* MATCH CARDS - CSS GRID */
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.match-card {
+    background-color: #222222;
+    border: 1px solid #D71920;
+    border-top: 4px solid #D4AF37;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 0;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(215, 25, 32, 0.3);
+}
+
+.match-card h3 {
+    color: #D4AF37;
+    margin-top: 0;
+}
+
+.match-card h2 {
+    color: #FFFFFF;
+}
+
+.match-card p {
+    color: #eeeeee;
+    line-height: 1.6;
+}
+
+.match-card button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* HIDE FILTERED MATCHES */
+
+.match-card.hidden {
+    display: none;
+}
+
+/* LIST VIEW */
+
+.match-grid.list-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.match-grid.list-view .match-card {
+    width: 100%;
+}
+
+/* =====================================
+   HAMBURGER MENU
+===================================== */
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #D71920;
+    color: white;
+    border: 1px solid #D4AF37;
+    border-radius: 6px;
+}
+
+/* =====================================
+   TABLET RESPONSIVENESS
+===================================== */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        width: 100%;
+    }
+
+    header nav.active {
+        display: block;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+    }
+
+    header nav li {
+        margin: 5px 0;
+    }
+
+    .match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .view-buttons {
+        justify-content: center;
+    }
+
+}
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 480px) {
+
+    header {
+        padding: 12px 15px;
+    }
+
+    .logo-container {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .rcb-logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .logo-container h1 {
+        font-size: 20px;
+    }
+
+    .match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-card {
+        padding: 18px;
+    }
+
+    .view-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .view-buttons button {
+        width: 100%;
+    }
+
+}
+/* ===== UPDATED RCB HOME BANNER ===== */
+
+#home {
+width: 90%;
+max-width: 1250px;
+min-height: 270px;
+margin: 30px auto;
+padding: 40px 25px;
+text-align: center;
+border: 1px solid #D4AF37;
+border-radius: 15px;
+background:
+radial-gradient(ellipse at center, rgba(215,25,32,.35), transparent 70%),
+linear-gradient(120deg, #270307, #A50916, #210307);
+}
+
+.home-label {
+color: #D4AF37;
+letter-spacing: 4px;
+font-weight: bold;
+font-size: 12px;
+}
+
+#home h2 {
+color: white;
+font-size: clamp(30px, 4vw, 45px);
+margin: 15px 0;
+}
+
+#home h2 span {
+color: #D4AF37;
+}
+
+#home p {
+color: #eee;
+margin-bottom: 25px;
+}
+
+.home-buttons {
+display: flex;
+justify-content: center;
+gap: 15px;
+flex-wrap: wrap;
+}
+
+.home-buttons a {
+padding: 12px 22px;
+border-radius: 7px;
+text-decoration: none;
+font-weight: bold;
+border: 1px solid #D4AF37;
+transition: .3s;
+}
+
+.home-primary {
+background: #D71920;
+color: white;
+}
+
+.home-secondary {
+background: transparent;
+color: #D4AF37;
+}
+
+.home-buttons a:hover {
+background: #D4AF37;
+color: #111;
+}
+
+@media(max-width:480px) {
+#home {
+padding: 30px 15px;
+min-height: auto;
+}
+
+#home h2 {
+    font-size: 28px;
+}
+.home-buttons {
+    flex-direction: column;
+}
+
+}
+/* ===== TEAM CARD HOVER FIX ===== */
+
+.ipl-team {
+    background: #222 !important;
+    border: 1px solid #444 !important;
+    transform: none;
+    transition: background 0.3s ease, border-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.ipl-team h3 {
+    color: #D71920;
+}
+
+/* Red highlight ONLY when hovering */
+
+.ipl-team:hover {
+    background: linear-gradient(145deg, #35080c, #1c1011) !important;
+    border: 1px solid #D4AF37 !important;
+    transform: translateY(-5px);
+}
+/* ===== GRID AND LIST VIEW ===== */
+
+/* DEFAULT GRID VIEW */
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.match-card {
+    min-width: 0;
+    padding: 22px;
+    background: #202020;
+    border: 1px solid #D4AF37;
+    border-radius: 12px;
+}
+
+/* LIST VIEW */
+
+.match-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.match-grid.list-view .match-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 8px 20px;
+    border-left: 5px solid #D71920;
+}
+
+/* MOBILE GRID VIEW */
+
+@media (max-width: 600px) {
+
+    .match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* MOBILE LIST VIEW */
+
+    .match-grid.list-view .match-card {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+}
+/* =====================================
+   ACTIVITY 8 - GRID AND LIST VIEW FIX
+===================================== */
+
+/* DEFAULT GRID VIEW */
+#match-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* GRID VIEW CARDS */
+#match-grid .match-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* LIST VIEW */
+#match-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+#match-grid.list-view .match-card {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 12px 25px;
+    border-left: 5px solid #D71920;
+}
+
+#match-grid.list-view .match-card .book-btn {
+    grid-column: 2;
+}
+
+/* ACTIVE BUTTON */
+#grid-view.active,
+#list-view.active {
+    background: #D4AF37;
+    color: #101010;
+    border: 2px solid #D4AF37;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+
+    /* GRID VIEW: TWO COMPACT COLUMNS */
+    #match-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #match-grid .match-card {
+        padding: 12px;
+        gap: 9px;
+    }
+
+    #match-grid .match-card h3 {
+        font-size: 16px;
+    }
+
+    #match-grid .match-card p {
+        font-size: 12px;
+    }
+
+    #match-grid .match-card .book-btn {
+        width: 100%;
+        font-size: 12px;
+        padding: 9px 4px;
+    }
+
+    /* LIST VIEW: FULL-WIDTH HORIZONTAL CARDS */
+    #match-grid.list-view {
+        grid-template-columns: 1fr;
+    }
+
+    #match-grid.list-view .match-card {
+        grid-template-columns: 1.3fr 1fr;
+        padding: 16px;
+        gap: 10px;
+    }
+
+    #match-grid.list-view .match-card .book-btn {
+        grid-column: 2;
+    }
+
+}

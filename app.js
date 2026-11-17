@@ -1,5 +1,5 @@
 // =====================================
-// REUSABLE TOAST NOTIFICATION FUNCTION
+// REUSABLE TOAST NOTIFICATION
 // =====================================
 
 function showToast(message) {
@@ -16,7 +16,6 @@ function showToast(message) {
     }, 100);
 
     setTimeout(() => {
-
         toast.classList.remove("show");
 
         setTimeout(() => {
@@ -24,17 +23,32 @@ function showToast(message) {
         }, 300);
 
     }, 3000);
-
 }
 
 
 // =====================================
-// ACTIVITY 5 - BOOK BUTTON INTERACTION
+// DOM CONTENT LOADED
 // =====================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
+
+    // =====================================
+    // ACTIVITY 5 - BOOK BUTTON INTERACTION
+    // =====================================
+
     const bookButtons = document.querySelectorAll(".book-btn");
+
+    const bookingSection = document.getElementById("booking");
+
+    const matchSelect = document.getElementById("match");
+
+    const matchValues = {
+        "CSK vs MI": "01",
+        "RCB vs MI": "02",
+        "DC vs CSK": "03",
+        "RR vs RCB": "04"
+    };
 
     bookButtons.forEach(button => {
 
@@ -42,12 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const matchName = this.dataset.match;
 
-            const bookingSection = document.getElementById("booking");
+            if (matchSelect && matchValues[matchName]) {
+                matchSelect.value = matchValues[matchName];
+                updateBookingSummary();
+            }
 
-            bookingSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            if (bookingSection) {
+                bookingSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
 
             showToast("You are booking tickets for " + matchName + "!");
 
@@ -60,54 +79,49 @@ document.addEventListener("DOMContentLoaded", function () {
     // ACTIVITY 7 - LIVE BOOKING SUMMARY
     // =====================================
 
-    // Selecting form elements using DOM selectors
-
-    const matchSelect = document.getElementById("match");
     const standSelect = document.getElementById("stand");
+
     const ticketInput = document.getElementById("tickets");
 
-
-    // Selecting Booking Summary elements
-
     const summaryMatch = document.getElementById("summary-match");
+
     const summaryStand = document.getElementById("summary-stand");
+
     const summaryPrice = document.getElementById("summary-price");
+
     const summaryQuantity = document.getElementById("summary-quantity");
+
     const summaryTotal = document.getElementById("summary-total");
 
-
-    // Ticket prices for each match
 
     const ticketPrices = {
 
         "01": {
-            "General": 1200,
-            "Premium": 2500,
-            "VIP": 5000
+            General: 1200,
+            Premium: 2500,
+            VIP: 5000
         },
 
         "02": {
-            "General": 1500,
-            "Premium": 3000,
-            "VIP": 6000
+            General: 1500,
+            Premium: 3000,
+            VIP: 6000
         },
 
         "03": {
-            "General": 1400,
-            "Premium": 3200,
-            "VIP": 6500
+            General: 1400,
+            Premium: 3200,
+            VIP: 6500
         },
 
         "04": {
-            "General": 1800,
-            "Premium": 3500,
-            "VIP": 7000
+            General: 1800,
+            Premium: 3500,
+            VIP: 7000
         }
 
     };
 
-
-    // Match names
 
     const matchNames = {
         "01": "CSK vs MI",
@@ -117,16 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    // Function to update Booking Summary
-
     function updateBookingSummary() {
 
+        if (!matchSelect || !standSelect || !ticketInput) return;
+
         const selectedMatch = matchSelect.value;
+
         const selectedStand = standSelect.value;
+
         const quantity = Number(ticketInput.value);
-
-
-        // Check whether a match is selected
 
         if (!selectedMatch) {
 
@@ -139,9 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
-        // Check ticket quantity
-
         if (!Number.isInteger(quantity) || quantity < 1) {
 
             summaryMatch.textContent = matchNames[selectedMatch];
@@ -153,15 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        const price = ticketPrices[selectedMatch]?.[selectedStand];
 
-        // Calculate ticket price and total amount
-
-        const price = ticketPrices[selectedMatch][selectedStand];
+        if (price === undefined) return;
 
         const total = price * quantity;
-
-
-        // Update Booking Summary Card
 
         summaryMatch.textContent = matchNames[selectedMatch];
 
@@ -173,20 +179,152 @@ document.addEventListener("DOMContentLoaded", function () {
 
         summaryTotal.textContent = total.toLocaleString("en-IN");
 
-
-        // Display confirmation toast
-
         showToast("Booking Summary Updated Successfully!");
 
     }
 
 
-    // Add change event listeners
+    if (matchSelect) {
+        matchSelect.addEventListener("change", updateBookingSummary);
+    }
 
-    matchSelect.addEventListener("change", updateBookingSummary);
+    if (standSelect) {
+        standSelect.addEventListener("change", updateBookingSummary);
+    }
 
-    standSelect.addEventListener("change", updateBookingSummary);
+    if (ticketInput) {
+        ticketInput.addEventListener("input", updateBookingSummary);
+    }
 
-    ticketInput.addEventListener("change", updateBookingSummary);
+
+    // =====================================
+    // ACTIVITY 8 - TEAM FILTER
+    // =====================================
+
+    const teamFilter = document.getElementById("team");
+
+    const matchCards = document.querySelectorAll(".match-card");
+
+
+    if (teamFilter) {
+
+        teamFilter.addEventListener("change", function () {
+
+            const selectedTeam = this.value;
+
+            matchCards.forEach(card => {
+
+                const teams = (card.dataset.team || "").split(" ");
+
+                if (
+                    selectedTeam === "all" ||
+                    teams.includes(selectedTeam)
+                ) {
+
+                    card.classList.remove("hidden");
+
+                } else {
+
+                    card.classList.add("hidden");
+
+                }
+
+            });
+
+            showToast("Match filter updated!");
+
+        });
+
+    }
+
+
+    // =====================================
+    // ACTIVITY 8 - GRID AND LIST VIEW
+    // =====================================
+
+    const matchGrid = document.getElementById("match-grid");
+
+    const gridButton = document.getElementById("grid-view");
+
+    const listButton = document.getElementById("list-view");
+
+
+    // Grid View
+
+    if (matchGrid && gridButton && listButton) {
+
+        gridButton.addEventListener("click", function () {
+
+            matchGrid.classList.remove("list-view");
+
+            gridButton.classList.add("active");
+
+            listButton.classList.remove("active");
+
+            showToast("Grid View Activated!");
+
+        });
+
+
+        // List View
+
+        listButton.addEventListener("click", function () {
+
+            matchGrid.classList.add("list-view");
+
+            listButton.classList.add("active");
+
+            gridButton.classList.remove("active");
+
+            showToast("List View Activated!");
+
+        });
+
+    }
+
+
+    // =====================================
+    // ACTIVITY 8 - HAMBURGER MENU
+    // =====================================
+
+    const menuToggle = document.getElementById("menu-toggle");
+
+    const navbar = document.getElementById("navbar");
+
+
+    if (menuToggle && navbar) {
+
+        menuToggle.addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+
+            const isOpen = navbar.classList.contains("active");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+
+        // Close menu after clicking a navigation link
+
+        const navLinks = navbar.querySelectorAll("a");
+
+        navLinks.forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navbar.classList.remove("active");
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+    }
 
 });
